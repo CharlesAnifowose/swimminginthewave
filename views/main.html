@@ -1,0 +1,64 @@
+<div ng-controller="MainCtrl" style="padding:40px;">
+	<div>
+
+		<div style="float:left; width:40%">
+			<h3>The Game</h3>
+			<p>Imagine 500 people got together to play a game.</p>
+			<p>Each peson starts with $100 (everyone starts off equal). Every round, each person has to walk up to a random person and flip a coin. If they win the coin toss, they get 10% of the other person's money, if they lose the coin toss they have to give up 10% of their own money.</p>
+			<p>With everyone starting equal, let's see what happens when they start to play (keep clicking to go from round to round and watch the distribution of wealth).</p>
+			<p>
+				<button ng-click="startTrading()" class="btn btn-large btn-success" ng-hide="isTrading">Start Trading</button>
+				<button ng-click="stopTrading()" class="btn btn-large btn-danger" ng-show="isTrading">Stop Trading</button>
+			</p>
+			<p ng-show="totalTraded">
+				{{totalTraded | currency}} traded so far.
+			</p>
+
+			<h3>The Giving Pledge</h3>
+			<p>Let's change the game a little.</p>
+			<p>
+				<label>
+					 <input type="checkbox" ng-model="givingPledge" style="position:relative; top:-3px;" />
+					 <strong>Activate the giving pledge</strong>
+				</label>
+			</p>
+			<p ng-show="givingPledge">
+				{{totalPledged | currency}} given through the Giving Pledge initiative.
+			</p>
+			<div class="well">
+				<label>
+					<label>Size of trades: </label>
+					<input type="number" ng-model="tradeUnit" />
+				</label>
+				<label>
+					<label>Pledge popularity: </label>
+					<input type="text" ng-model="pledgePopularity" />
+				</label>
+			</div>
+
+		</div>
+		
+		
+		<div style="float:left; width:60%">
+			<div style="text-align:center;">
+				<strong> Round #{{round}} </strong> 
+				<!-- <br/> <button ng-click="trade()" class="btn" style="width:100%;">Next Round</button> -->
+			</div>
+			<div>
+			</div>
+			<table>
+				<tr>
+					<td ng-repeat="group in peopleOrganized" style="text-align: center; ">
+						<strong>${{group.median}}</strong>
+					</td>
+				</tr>
+				<tr class="circle-container">
+					<td ng-repeat="group in peopleOrganized" ng-style="columnStyle"}>
+						<div ng-repeat="person in group.list" class="person clr" ng-class="person.css" ng-click="trackPerson(person)"></div>
+					</td>
+				</tr>
+			</table>
+		</div>
+
+	</div>
+</div>
