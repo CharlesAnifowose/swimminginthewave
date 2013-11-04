@@ -1,0 +1,21 @@
+.circle-container {
+	text-align: center
+}
+.circle-container td {
+	vertical-align: top;
+}
+
+.person {
+	display:inline-block;
+	margin: 2px 2px;
+	height: 16px;
+	width: 7px;
+}
+.person.man.clr {background:url('../images/man-clr.png'); }
+.person.fem.clr {background:url('../images/fem-clr.png'); }
+.person.man.clr:hover {background:url('../images/man-hover.png'); }
+.person.fem.clr:hover {background:url('../images/fem-hover.png'); }
+.person.man.pos {background:url('../images/man-pos.png'); }
+.person.fem.pos {background:url('../images/fem-pos.png'); }
+
+
